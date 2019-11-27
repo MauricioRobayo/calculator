@@ -1,3 +1,9 @@
+# Math-magicians calculator
+
+Project description: [react-calculator](https://github.com/microverseinc/project-react-calculator/blob/master/README.md).
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
