@@ -28,6 +28,11 @@
       "last 1 safari version"
     ]
   },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "all"
+  },
   "devDependencies": {
     "eslint": "^6.7.1",
     "eslint-config-airbnb": "^18.0.1",
