@@ -15,15 +15,58 @@ class App extends React.Component {
   }
 
   handleClick = buttonName => {
-    this.setState(state => calculate(buttonName, state))
+    const { total, next } = this.state
+    const operations = ['*', '/', '+', '-', '=']
+    const modifiers = ['AC', '+/-', '%']
+
+    if (total === 'NaN') {
+      this.setState({ total: null, next: null, operation: null })
+      return
+    }
+
+    if (modifiers.includes(buttonName)) {
+      this.setState(state => calculate(buttonName, state))
+      return
+    }
+
+    if (operations.includes(buttonName)) {
+      if (!next && !total) {
+        return
+      }
+      if (!next && total) {
+        this.setState({
+          operation: buttonName,
+        })
+        return
+      }
+      if (next && total) {
+        this.setState(state => calculate(buttonName, state))
+        return
+      }
+      this.setState(state => ({
+        operation: buttonName,
+        total: state.next,
+        next: null,
+      }))
+      return
+    }
+    this.setState({ next: next === null ? buttonName : next + buttonName })
+  }
+
+  allClear() {
+    this.setState({
+      total: null,
+      next: null,
+      operation: null,
+    })
   }
 
   render() {
     const { total, next } = this.state
     return (
       <div className="app">
-        <Display total={total} next={next} />
-        <ButtonPanel onClick={this.handleClick} />
+        <Display result={next || total || 0} />
+        <ButtonPanel handleClick={this.handleClick} />
       </div>
     )
   }

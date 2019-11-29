@@ -3,11 +3,11 @@ import React from 'react'
 import Button from './Button'
 
 const ButtonPanel = ({ handleClick }) => {
-  const coloredBtns = ['/', 'X', '-', '+', '=']
+  const coloredBtns = ['/', '*', '-', '+', '=']
 
   const panels = {
     first: ['AC', '+/-', '%', '/'],
-    secont: ['7', '8', '9', 'X'],
+    secont: ['7', '8', '9', '*'],
     third: ['4', '5', '6', '-'],
     fourth: ['1', '2', '3', '+'],
     fifth: ['0', '.', '='],
@@ -22,7 +22,7 @@ const ButtonPanel = ({ handleClick }) => {
               key={btnName}
               name={btnName}
               color={coloredBtns.includes(btnName)}
-              onClick={handleClick}
+              handleClick={handleClick}
               wide={btnName === '0'}
             />
           ))}
