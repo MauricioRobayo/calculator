@@ -1,26 +1,30 @@
 body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+body, button {
   font-size: 32px;
   font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .app {
   width: 700px;
 }
+.display, .button-panel {
+  height: 100px;
+  display: flex;
+}
 .display {
   background-color: gray;
-  height: 100px;
   color: white;
   font-weight: bold;
   padding: 1rem;
-  display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-.button-panel {
-  height: 100px;
-  display: flex;
-  align-content: stretch;
-}
 .button-panel button {
   border: 1px solid darkgray;
-  font-size: inherit;
 }
