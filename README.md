@@ -2,6 +2,8 @@
 
 Project description: [react-calculator](https://github.com/microverseinc/project-react-calculator/blob/master/README.md).
 
+👉 [Live site](https://whispering-stream-50068.herokuapp.com/).
+
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
