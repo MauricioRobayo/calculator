@@ -15,7 +15,7 @@ const Button = ({ name, color, wide }) => (
 
 Button.propTypes = {
   name: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
+  color: PropTypes.bool.isRequired,
   wide: PropTypes.bool,
 }
 
