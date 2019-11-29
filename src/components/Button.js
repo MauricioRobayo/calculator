@@ -4,7 +4,10 @@ import PropTypes from 'prop-types'
 const Button = ({ name, color, wide }) => (
   <button
     type="button"
-    style={{ backgroundColor: color, flexBasis: wide ? '50%' : '25%' }}
+    style={{
+      backgroundColor: color ? 'orange' : 'lightgray',
+      flexBasis: wide ? '50%' : '25%',
+    }}
   >
     {name}
   </button>
@@ -12,13 +15,12 @@ const Button = ({ name, color, wide }) => (
 
 Button.propTypes = {
   name: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
   wide: PropTypes.bool,
-  color: PropTypes.string,
 }
 
 Button.defaultProps = {
   wide: false,
-  color: 'orange',
 }
 
 export default Button

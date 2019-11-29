@@ -2,42 +2,38 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Button from './Button'
 
-const ButtonPanel = ({ onClick }) => (
-  <div>
-    <div className="button-panel">
-      <Button name="AC" color="lightgray" onClick={onClick} />
-      <Button name="+/-" color="lightgray" onClick={onClick} />
-      <Button name="%" color="lightgray" onClick={onClick} />
-      <Button name="/" onClick={onClick} />
+const ButtonPanel = ({ handleClick }) => {
+  const coloredBtns = ['/', 'X', '-', '+', '=']
+
+  const panels = {
+    first: ['AC', '+/-', '%', '/'],
+    secont: ['7', '8', '9', 'X'],
+    third: ['4', '5', '6', '-'],
+    fourth: ['1', '2', '3', '+'],
+    fifth: ['0', '.', '='],
+  }
+
+  return (
+    <div>
+      {Object.entries(panels).map(([key, value]) => (
+        <div key={key} className="button-panel">
+          {value.map(btnName => (
+            <Button
+              key={btnName}
+              name={btnName}
+              color={coloredBtns.includes(btnName)}
+              onClick={handleClick}
+              wide={btnName === '0'}
+            />
+          ))}
+        </div>
+      ))}
     </div>
-    <div className="button-panel">
-      <Button name="7" color="lightgray" onClick={onClick} />
-      <Button name="8" color="lightgray" onClick={onClick} />
-      <Button name="9" color="lightgray" onClick={onClick} />
-      <Button name="*" onClick={onClick} />
-    </div>
-    <div className="button-panel">
-      <Button name="4" color="lightgray" onClick={onClick} />
-      <Button name="5" color="lightgray" onClick={onClick} />
-      <Button name="6" color="lightgray" onClick={onClick} />
-      <Button name="-" onClick={onClick} />
-    </div>
-    <div className="button-panel">
-      <Button name="1" color="lightgray" onClick={onClick} />
-      <Button name="2" color="lightgray" onClick={onClick} />
-      <Button name="3" color="lightgray" onClick={onClick} />
-      <Button name="+" onClick={onClick} />
-    </div>
-    <div className="button-panel">
-      <Button name="0" wide color="lightgray" onClick={onClick} />
-      <Button name="." color="lightgray" onClick={onClick} />
-      <Button name="=" onClick={onClick} />
-    </div>
-  </div>
-)
+  )
+}
 
 ButtonPanel.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
 }
 
 export default ButtonPanel
