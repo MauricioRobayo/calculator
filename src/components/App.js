@@ -51,7 +51,7 @@ class App extends React.Component {
         })
         return
       }
-      if (next && total) {
+      if (next && total && operation) {
         this.setState(state => calculate(buttonName, state))
         return
       }
