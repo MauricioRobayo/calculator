@@ -1,38 +1,39 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import Button from './Button'
 
-const ButtonPanel = () => (
-  <div>
-    <div className="button-panel">
-      <Button name="AC" color="lightgray" />
-      <Button name="+/-" color="lightgray" />
-      <Button name="%" color="lightgray" />
-      <Button name="/" />
+const ButtonPanel = ({ handleClick }) => {
+  const coloredBtns = ['/', '*', '-', '+', '=']
+
+  const panels = {
+    first: ['AC', '+/-', '%', '/'],
+    secont: ['7', '8', '9', '*'],
+    third: ['4', '5', '6', '-'],
+    fourth: ['1', '2', '3', '+'],
+    fifth: ['0', '.', '='],
+  }
+
+  return (
+    <div>
+      {Object.entries(panels).map(([key, value]) => (
+        <div key={key} className="button-panel">
+          {value.map(btnName => (
+            <Button
+              key={btnName}
+              name={btnName}
+              color={coloredBtns.includes(btnName)}
+              handleClick={handleClick}
+              wide={btnName === '0'}
+            />
+          ))}
+        </div>
+      ))}
     </div>
-    <div className="button-panel">
-      <Button name="7" color="lightgray" />
-      <Button name="8" color="lightgray" />
-      <Button name="9" color="lightgray" />
-      <Button name="*" />
-    </div>
-    <div className="button-panel">
-      <Button name="4" color="lightgray" />
-      <Button name="5" color="lightgray" />
-      <Button name="6" color="lightgray" />
-      <Button name="-" />
-    </div>
-    <div className="button-panel">
-      <Button name="1" color="lightgray" />
-      <Button name="2" color="lightgray" />
-      <Button name="3" color="lightgray" />
-      <Button name="+" />
-    </div>
-    <div className="button-panel">
-      <Button name="0" wide color="lightgray" />
-      <Button name="." color="lightgray" />
-      <Button name="=" />
-    </div>
-  </div>
-)
+  )
+}
+
+ButtonPanel.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+}
 
 export default ButtonPanel
