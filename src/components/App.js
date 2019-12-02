@@ -16,61 +16,7 @@ class App extends React.Component {
   }
 
   handleClick = buttonName => {
-    const { total, next, operation } = this.state
-    const operations = ['*', '/', '+', '-', '=']
-    const modifiers = {
-      '+/-': {
-        total: total * -1,
-        next: next * -1,
-        operation,
-      },
-      '%': {
-        total,
-        next: next ? next / 100 : next,
-        operation,
-      },
-    }
-
-    if (total === 'NaN' || buttonName === 'AC') {
-      this.allClear()
-      return
-    }
-
-    if (modifiers[buttonName]) {
-      this.setState(modifiers[buttonName])
-      return
-    }
-
-    if (operations.includes(buttonName)) {
-      if (!next && !total) {
-        return
-      }
-      if (!next && total) {
-        this.setState({
-          operation: buttonName,
-        })
-        return
-      }
-      if (next && total && operation) {
-        this.setState(state => calculate(buttonName, state))
-        return
-      }
-      this.setState(state => ({
-        operation: buttonName,
-        total: state.next,
-        next: null,
-      }))
-      return
-    }
-    this.setState({ next: next === null ? buttonName : next + buttonName })
-  }
-
-  allClear() {
-    this.setState({
-      total: null,
-      next: null,
-      operation: null,
-    })
+    this.setState(state => calculate(buttonName, state))
   }
 
   render() {
