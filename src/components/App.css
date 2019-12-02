@@ -10,6 +10,13 @@ body, button {
   justify-content: center;
   align-items: center;
 }
+button {
+  cursor: pointer;
+  transition: filter .25s;
+}
+button:hover {
+  filter: brightness(1.15);
+}
 .app {
   width: 700px;
 }
