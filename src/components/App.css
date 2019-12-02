@@ -3,36 +3,44 @@ body {
   margin: 0;
   padding: 0;
 }
-body, button {
-  font-size: 32px;
+html {
+  font-size: 22px;
   font-family: sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+@media (min-width: 420px) {
+  html {
+    font-size: 32px;
+  }
 }
 button {
+  font-size: 1rem;
+  padding: 0.5rem;
+  display: flex;
   cursor: pointer;
   transition: filter .25s;
+  justify-content: center;
+  align-items: center;
 }
 button:hover {
   filter: brightness(1.15);
 }
 .app {
-  width: 700px;
+  margin: 1em auto;
+  max-width: 520px;
+  min-width: 280px;
 }
 .display, .button-panel {
-  height: 100px;
   display: flex;
 }
 .display {
-  font-size: 1.5em;
+  font-size: 1.5rem;
   background-color: gray;
   color: white;
   font-weight: bold;
-  padding: 0 0.5em;
+  padding: 0.25rem 0.5rem;
   justify-content: flex-end;
   align-items: center;
 }
 .button-panel button {
-  border: 1px solid darkgray;
+  border: 0.5px solid darkgray;
 }
