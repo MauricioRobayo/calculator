@@ -18,22 +18,25 @@ const calculate = (buttonName, { total, next, operation }) => {
   }
 
   const operations = ['*', '/', '+', '-', '=']
+  if (operations.includes(buttonName) && !next && !total) {
+    return
+  }
+
+  if (operations.includes(buttonName) && !next && total) {
+    return {
+      operation: buttonName,
+    }
+  }
+
+  if (operations.includes(buttonName) && next && total && operation) {
+    return {
+      total: operate(total, next, operation),
+      next: null,
+      operation: buttonName === '=' ? null : buttonName,
+    }
+  }
+
   if (operations.includes(buttonName)) {
-    if (!next && !total) {
-      return
-    }
-    if (!next && total) {
-      return {
-        operation: buttonName,
-      }
-    }
-    if (next && total && operation) {
-      return {
-        total: operate(total, next, operation),
-        next: null,
-        operation: buttonName === '=' ? null : buttonName,
-      }
-    }
     return {
       operation: buttonName,
       total: next,
