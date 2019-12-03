@@ -1,14 +1,6 @@
 import operate from './operate'
 
 const calculate = (buttonName, { total, next, operation }) => {
-  if (total === 'NaN' || buttonName === 'AC') {
-    return {
-      total: null,
-      next: null,
-      operation: null,
-    }
-  }
-
   const modifiers = {
     '+/-': {
       total: total * -1,
