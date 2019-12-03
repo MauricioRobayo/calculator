@@ -1,7 +1,14 @@
 import operate from './operate'
 
 const calculate = (buttonName, { total, next, operation }) => {
-  const operations = ['*', '/', '+', '-', '=']
+  if (total === 'NaN' || buttonName === 'AC') {
+    return {
+      total: null,
+      next: null,
+      operation: null,
+    }
+  }
+
   const modifiers = {
     '+/-': {
       total: total * -1,
@@ -14,19 +21,11 @@ const calculate = (buttonName, { total, next, operation }) => {
       operation,
     },
   }
-
-  if (total === 'NaN' || buttonName === 'AC') {
-    return {
-      total: null,
-      next: null,
-      operation: null,
-    }
-  }
-
   if (modifiers[buttonName]) {
     return modifiers[buttonName]
   }
 
+  const operations = ['*', '/', '+', '-', '=']
   if (operations.includes(buttonName)) {
     if (!next && !total) {
       return
