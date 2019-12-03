@@ -12,14 +12,13 @@ class App extends React.Component {
       total: null,
       next: null,
       operation: null,
+      error: null,
     }
   }
 
   handleClick = buttonName => {
     this.setState(state =>
-      state.total === 'NaN' ||
-      buttonName === 'AC' ||
-      (buttonName === '=' && (!state.next || !state.total))
+      state.total === 'NaN' || buttonName === 'AC'
         ? { total: null, next: null, operation: null }
         : calculate(buttonName, state),
     )
