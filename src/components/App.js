@@ -17,7 +17,9 @@ class App extends React.Component {
 
   handleClick = buttonName => {
     this.setState(state =>
-      state.total === 'NaN' || buttonName === 'AC'
+      state.total === 'NaN' ||
+      buttonName === 'AC' ||
+      (buttonName === '=' && (!state.next || !state.total))
         ? { total: null, next: null, operation: null }
         : calculate(buttonName, state),
     )

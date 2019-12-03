@@ -1,5 +1,27 @@
 import operate from './operate'
 
+const operator = (buttonName, { total, next, operation }) => {
+  if (!next && total) {
+    return {
+      operation: buttonName,
+    }
+  }
+
+  if (next && total && operation) {
+    return {
+      total: operate(total, next, operation),
+      next: null,
+      operation: buttonName === '=' ? null : buttonName,
+    }
+  }
+
+  return {
+    operation: buttonName,
+    total: next,
+    next: null,
+  }
+}
+
 const calculate = (buttonName, { total, next, operation }) => {
   const modifiers = {
     '+/-': {
@@ -17,32 +39,10 @@ const calculate = (buttonName, { total, next, operation }) => {
     return modifiers[buttonName]
   }
 
-  const operations = ['*', '/', '+', '-', '=']
-  if (operations.includes(buttonName) && !next && !total) {
-    return
+  if (['*', '/', '+', '-', '='].includes(buttonName)) {
+    return operator(buttonName, { total, next, operation })
   }
 
-  if (operations.includes(buttonName) && !next && total) {
-    return {
-      operation: buttonName,
-    }
-  }
-
-  if (operations.includes(buttonName) && next && total && operation) {
-    return {
-      total: operate(total, next, operation),
-      next: null,
-      operation: buttonName === '=' ? null : buttonName,
-    }
-  }
-
-  if (operations.includes(buttonName)) {
-    return {
-      operation: buttonName,
-      total: next,
-      next: null,
-    }
-  }
   return { next: next === null ? buttonName : next + buttonName }
 }
 
