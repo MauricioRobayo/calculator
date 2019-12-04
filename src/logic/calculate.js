@@ -3,29 +3,28 @@ import operate from './operate'
 const isNumber = value => !Number.isNaN(parseFloat(value))
 
 const operator = (buttonName, { total, next, operation }) => {
-  if (!isNumber(next) && !isNumber(total)) {
-    return {}
-  }
-
   if (!isNumber(next) && total) {
     return {
-      operation: buttonName,
+      operation: buttonName === '=' ? operation : buttonName,
     }
   }
 
   if (next && !isNumber(total)) {
     return {
-      operation: buttonName,
+      operation: buttonName === '=' ? operation : buttonName,
       total: next,
       next: null,
     }
   }
 
-  return {
-    total: operate(total, next, operation),
-    next: null,
-    operation: buttonName === '=' ? operation : buttonName,
+  if (isNumber(next) && isNumber(total) && operation) {
+    return {
+      total: operate(total, next, operation),
+      next: null,
+      operation: buttonName === '=' ? operation : buttonName,
+    }
   }
+  return {}
 }
 
 const calculate = (buttonName, { total, next, operation }) => {
