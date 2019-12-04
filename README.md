@@ -1,6 +1,6 @@
 # Math-magicians calculator
 
-[![codebeat badge](https://codebeat.co/badges/724edf13-3caf-4430-95c7-8cba45eafb51)](https://codebeat.co/projects/github-com-mauriciorobayo-calculator-develop)
+[![codebeat badge](https://codebeat.co/badges/93ad7cd0-46f3-4278-9863-901dd157673e)](https://codebeat.co/projects/github-com-mauriciorobayo-calculator-master)
 
 A simple Rectjs calculator.
 
