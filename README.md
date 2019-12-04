@@ -1,8 +1,11 @@
 # Math-magicians calculator
 
-Project description: [react-calculator](https://github.com/microverseinc/project-react-calculator/blob/master/README.md).
+[![codebeat badge](https://codebeat.co/badges/724edf13-3caf-4430-95c7-8cba45eafb51)](https://codebeat.co/projects/github-com-mauriciorobayo-calculator-develop)
 
-👉 [Live site](https://whispering-stream-50068.herokuapp.com/).
+A simple Rectjs calculator.
+
+- [Project description](https://github.com/microverseinc/project-react-calculator/blob/master/README.md).
+- [Live site](https://mauriciorobayo.github.io/calculator).
 
 ---
 
