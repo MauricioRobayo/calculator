@@ -1,17 +1,19 @@
 import operate from './operate'
 
-const buildNumber = (next, value) => {
-  return { next: next === null ? value : next + value }
-}
+const isNumber = value => !Number.isNaN(parseFloat(value))
 
 const operator = (buttonName, { total, next, operation }) => {
-  if (!next && total) {
+  if (!isNumber(next) && !isNumber(total)) {
+    return {}
+  }
+
+  if (!isNumber(next) && total) {
     return {
       operation: buttonName,
     }
   }
 
-  if (next && !total) {
+  if (next && !isNumber(total)) {
     return {
       operation: buttonName,
       total: next,
@@ -19,18 +21,10 @@ const operator = (buttonName, { total, next, operation }) => {
     }
   }
 
-  try {
-    return {
-      total: operate(total, next, operation),
-      next: null,
-      operation: buttonName === '=' ? null : buttonName,
-    }
-  } catch (e) {
-    return {
-      total: null,
-      next: null,
-      operation: null,
-    }
+  return {
+    total: operate(total, next, operation),
+    next: null,
+    operation: buttonName === '=' ? operation : buttonName,
   }
 }
 
@@ -39,12 +33,9 @@ const calculate = (buttonName, { total, next, operation }) => {
     '+/-': {
       total: total * -1,
       next: next * -1,
-      operation,
     },
     '%': {
-      total,
       next: next ? next / 100 : next,
-      operation,
     },
   }
   if (modifiers[buttonName]) {
@@ -54,7 +45,7 @@ const calculate = (buttonName, { total, next, operation }) => {
   if (['*', '/', '+', '-', '='].includes(buttonName)) {
     return operator(buttonName, { total, next, operation })
   }
-  return buildNumber(next, buttonName)
+  return {}
 }
 
-export default calculate
+export { calculate, isNumber }
