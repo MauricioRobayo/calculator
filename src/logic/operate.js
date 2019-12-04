@@ -8,6 +8,6 @@ const operations = {
 }
 
 const operate = (num1, num2, operation) =>
-  operations[operation](Big(num1), Big(num2)).toString()
+  operations[operation](Big(num1), Big(num2))
 
 export default operate
