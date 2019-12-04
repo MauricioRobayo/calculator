@@ -14,10 +14,10 @@ const ButtonPanel = ({ handleClick }) => {
   }
 
   return (
-    <div>
-      {Object.entries(panels).map(([key, value]) => (
+    <>
+      {Object.entries(panels).map(([key, panel]) => (
         <div key={key} className="button-panel">
-          {value.map(btnName => (
+          {panel.map(btnName => (
             <Button
               key={btnName}
               name={btnName}
@@ -28,7 +28,7 @@ const ButtonPanel = ({ handleClick }) => {
           ))}
         </div>
       ))}
-    </div>
+    </>
   )
 }
 
