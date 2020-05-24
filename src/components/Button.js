@@ -1,7 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const Button = ({ name, color, wide, handleClick }) => (
+const Button = ({
+  name, color, wide, handleClick,
+}) => (
   <button
     onClick={() => handleClick(name)}
     type="button"
@@ -12,17 +14,17 @@ const Button = ({ name, color, wide, handleClick }) => (
   >
     {name}
   </button>
-)
+);
 
 Button.propTypes = {
   handleClick: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   color: PropTypes.bool.isRequired,
   wide: PropTypes.bool,
-}
+};
 
 Button.defaultProps = {
   wide: false,
-}
+};
 
-export default Button
+export default Button;

@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types'
-import React from 'react'
-import Button from './Button'
+import PropTypes from 'prop-types';
+import React from 'react';
+import Button from './Button';
 
 const ButtonPanel = ({ handleClick }) => {
-  const coloredBtns = ['/', '*', '-', '+', '=']
+  const coloredBtns = ['/', '*', '-', '+', '='];
 
   const panels = {
     first: ['AC', '+/-', '%', '/'],
@@ -11,7 +11,7 @@ const ButtonPanel = ({ handleClick }) => {
     third: ['4', '5', '6', '-'],
     fourth: ['1', '2', '3', '+'],
     fifth: ['0', '.', '='],
-  }
+  };
 
   return (
     <>
@@ -29,11 +29,11 @@ const ButtonPanel = ({ handleClick }) => {
         </div>
       ))}
     </>
-  )
-}
+  );
+};
 
 ButtonPanel.propTypes = {
   handleClick: PropTypes.func.isRequired,
-}
+};
 
-export default ButtonPanel
+export default ButtonPanel;

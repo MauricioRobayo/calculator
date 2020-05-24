@@ -1,12 +1,12 @@
-import operate from './operate'
+import operate from './operate';
 
-const isNumber = value => !Number.isNaN(parseFloat(value))
+const isNumber = value => !Number.isNaN(parseFloat(value));
 
 const operator = (buttonName, { total, next, operation }) => {
   if (!isNumber(next) && total) {
     return {
       operation: buttonName === '=' ? operation : buttonName,
-    }
+    };
   }
 
   if (next && !isNumber(total)) {
@@ -14,7 +14,7 @@ const operator = (buttonName, { total, next, operation }) => {
       operation: buttonName === '=' ? operation : buttonName,
       total: next,
       next: null,
-    }
+    };
   }
 
   if (isNumber(next) && isNumber(total) && operation) {
@@ -22,10 +22,10 @@ const operator = (buttonName, { total, next, operation }) => {
       total: operate(total, next, operation),
       next: null,
       operation: buttonName === '=' ? operation : buttonName,
-    }
+    };
   }
-  return {}
-}
+  return {};
+};
 
 const calculate = (buttonName, { total, next, operation }) => {
   const modifiers = {
@@ -36,15 +36,15 @@ const calculate = (buttonName, { total, next, operation }) => {
     '%': {
       next: next ? next / 100 : next,
     },
-  }
+  };
   if (modifiers[buttonName]) {
-    return modifiers[buttonName]
+    return modifiers[buttonName];
   }
 
   if (['*', '/', '+', '-', '='].includes(buttonName)) {
-    return operator(buttonName, { total, next, operation })
+    return operator(buttonName, { total, next, operation });
   }
-  return {}
-}
+  return {};
+};
 
-export { calculate, isNumber }
+export { calculate, isNumber };
