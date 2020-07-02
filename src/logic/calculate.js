@@ -44,7 +44,7 @@ const calculate = (buttonName, { total, next, operation }) => {
   if (['*', '/', '+', '-', '='].includes(buttonName)) {
     return operator(buttonName, { total, next, operation });
   }
-  return {};
+  return {total, next, operation};
 };
 
 export { calculate, isNumber };
