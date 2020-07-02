@@ -17,7 +17,7 @@ button {
   padding: 0.5rem;
   display: flex;
   cursor: pointer;
-  transition: filter .25s;
+  transition: filter 0.25s;
   justify-content: center;
   align-items: center;
 }
@@ -29,7 +29,8 @@ button:hover {
   max-width: 520px;
   min-width: 280px;
 }
-.display, .button-panel {
+.display,
+.button-panel {
   display: flex;
 }
 .display {
