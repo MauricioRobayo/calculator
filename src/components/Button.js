@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 const Button = ({ name, color, wide, handleClick }) => (
   <button
-    onClick={() => handleClick(name)}
+    onClick={() => {
+      return handleClick(name);
+    }}
     type="button"
     style={{
       backgroundColor: color ? 'orange' : 'lightgray',
