@@ -1,9 +1,5 @@
 # Math-magicians calculator
 
-[![codebeat badge](https://codebeat.co/badges/93ad7cd0-46f3-4278-9863-901dd157673e)](https://codebeat.co/projects/github-com-mauriciorobayo-calculator-master)
-
-A simple Rectjs calculator.
-
 - [Project description](https://github.com/microverseinc/project-react-calculator/blob/master/README.md).
 - [Live site](https://mauriciorobayo.github.io/calculator).
 
