@@ -10,7 +10,6 @@ class App extends Component {
     this.state = {
       total: null,
       next: null,
-      operation: null,
     };
   }
 
@@ -28,7 +27,7 @@ class App extends Component {
   allClear(buttonName) {
     const { total } = this.state;
     if (total === 'NaN' || buttonName === 'AC') {
-      this.setState({ total: null, next: null, operation: null });
+      this.setState({ total: null, next: null });
     }
   }
 
